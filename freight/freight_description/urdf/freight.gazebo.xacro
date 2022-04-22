@@ -1,14 +1,17 @@
 <?xml version="1.0"?>
 
 <robot name="turtlebot3_waffle" xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:arg name="laser_visual"  default="true"/>
+  <!-- Parameters that allow us to see the rays from sensors -->
+  <xacro:arg name="laser_visual"  default="false"/>
   <xacro:arg name="camera_visual" default="false"/>
   <xacro:arg name="imu_visual"    default="false"/>
 
+  <!-- Base of the robot -->
   <gazebo reference="base_link">
     <material>Gazebo/DarkGrey</material>
   </gazebo>
 
+  <!-- Defining wheeel parameters -->
   <gazebo reference="wheel_left_link">
     <mu1>0.1</mu1>
     <mu2>0.1</mu2>
@@ -31,26 +34,7 @@
     <material>Gazebo/FlatBlack</material>
   </gazebo>
 
-  <!-- <gazebo reference="caster_back_right_link">
-    <mu1>0.1</mu1>
-    <mu2>0.1</mu2>
-    <kp>1000000.0</kp>
-    <kd>100.0</kd>
-    <minDepth>0.001</minDepth>
-    <maxVel>1.0</maxVel>
-    <material>Gazebo/FlatBlack</material>
-  </gazebo>
-
-  <gazebo reference="caster_back_left_link">
-    <mu1>0.1</mu1>
-    <mu2>0.1</mu2>
-    <kp>1000000.0</kp>
-    <kd>100.0</kd>
-    <minDepth>0.001</minDepth>
-    <maxVel>1.0</maxVel>
-    <material>Gazebo/FlatBlack</material>
-  </gazebo> -->
-
+  <!-- Placing imu sensor where imu link is created  -->
   <gazebo reference="imu_link">
     <sensor type="imu" name="imu">
       <always_on>true</always_on>
@@ -59,6 +43,7 @@
     <material>Gazebo/Grey</material>
   </gazebo>
 
+  <!-- Using the turtlebot differential drive controller to move fetch robot -->
   <gazebo>
     <plugin name="turtlebot3_waffle_controller" filename="libgazebo_ros_diff_drive.so">
       <commandTopic>cmd_vel</commandTopic>
@@ -82,6 +67,7 @@
     </plugin>
   </gazebo>
 
+  <!-- Defining the imu sensor parameters -->
   <gazebo>
     <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
       <alwaysOn>true</alwaysOn>
@@ -111,6 +97,7 @@
     </plugin>
   </gazebo>
 
+  <!-- Defining 2d lidar parameters -->
   <gazebo reference="base_scan">
     <material>Gazebo/FlatBlack</material>
     <sensor type="ray" name="lds_lfcd_sensor">
@@ -144,6 +131,7 @@
     </sensor>
   </gazebo>
 
+  <!-- Defining RGB-D camera parameters -->
   <gazebo reference="camera_rgb_frame">
     <sensor type="depth" name="realsense_R200">
       <always_on>true</always_on>

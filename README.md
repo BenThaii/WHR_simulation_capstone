@@ -1,4 +1,4 @@
-# Freight Robot in based on Turtlebot3 Sim
+# Freight Robot Model and simulation based on Turtlebot3 Sim
 
 # Installation
 * Clone This repo

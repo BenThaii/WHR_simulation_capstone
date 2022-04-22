@@ -1,0 +1,233 @@
+<?xml version="1.0" ?>
+ 
+<sdf version="1.5">
+        <world name="default">
+                <light name='sun' type='directional'>
+                        <cast_shadows>0</cast_shadows>
+                        <pose>0 0 10 0 -0 0</pose>
+                        <diffuse>0.8 0.8 0.8 1</diffuse>
+                        <specular>0.2 0.2 0.2 1</specular>
+                        <attenuation>
+                                <range>1000</range>
+                                <constant>0.9</constant>
+                                <linear>0.01</linear>
+                                <quadratic>0.001</quadratic>
+                        </attenuation>
+                        <direction>0.5 0.1 -0.9</direction>
+                </light>
+                
+                <scene>
+                        <ambient>0.4 0.4 0.4 1</ambient>
+                        <background>0.7 0.7 0.7 1</background>
+                        <shadows>0</shadows>
+                </scene>
+
+                <physics type='ode'>
+                        <max_step_size>0.01</max_step_size>
+                        <real_time_factor>1</real_time_factor>
+                        <real_time_update_rate>100</real_time_update_rate>
+                        <gravity>0 0 -9.8</gravity>
+                </physics>
+                <!-- A ground plane -->
+                <include>
+                        <uri>model://ground_plane</uri>
+                </include>
+
+                <include>
+                        <uri> model://WarehouseNew</uri>
+                        <pose>0 0 0 0 0 0 </pose>
+                </include>
+                
+                <!--Shelfs-->
+                <model name="S1">
+                        <include>
+                                <uri> model://shelf</uri>
+                                <pose> -6 -13 0.3 0.000074 -0.000016 0.000406 </pose>
+                        </include>
+                </model>
+
+                <model name="S2">
+                        <include>
+                                <uri> model://shelf</uri>
+                                <pose> 0 -13 0.3 0.000074 -0.000016 0.000406 </pose>
+                        </include>
+                </model>
+
+                <model name="S3">
+                        <include>
+                                <uri> model://shelf</uri>
+                                <pose> 6 -13 0.3 0.000074 -0.000016 0.000406 </pose>
+                        </include>
+                </model>
+
+                <model name="S4">
+                        <include>
+                                <uri> model://shelf</uri>
+                                <pose> -6 0 0.3 0.000074 -0.000016 0.000406 </pose>
+                        </include>
+                </model>
+
+                <model name="S5">
+                        <include>
+                                <uri> model://shelf</uri>
+                                <pose> 0 0 0.3 0.000074 -0.000016 0.000406 </pose>
+                        </include>
+                </model>
+
+                <model name="S6">
+                        <include>
+                                <uri> model://shelf</uri>
+                                <pose> 6 0 0.3 0.000074 -0.000016 0.000406 </pose>
+                        </include>
+                </model>
+
+                <model name="S7">
+                        <include>
+                                <uri> model://shelf</uri>
+                                <pose> -6 13 0.3 0.000074 -0.000016 0.000406 </pose>
+                        </include>
+                </model>
+
+                <model name="S8">
+                        <include>
+                                <uri> model://shelf</uri>
+                                <pose> 0 13 0.3 0.000074 -0.000016 0.000406 </pose>
+                        </include>
+                </model>
+
+                <model name="S9">
+                        <include>
+                                <uri> model://shelf</uri>
+                                <pose> 6 13 0.3 0.000074 -0.000016 0.000406 </pose>
+                        </include>
+                </model>
+                <!--Walls-->
+                <model name="wall_1">
+                        <pose> 10 0 2.5 0 0 0</pose>
+                        <static>true</static>
+                        <link name="link">
+                                <inertial>
+                                        <mass>10.0</mass>
+                                        <inertia> <!-- inertias are tricky to compute -->
+                                                <ixx>1</ixx>       <!-- for a box: ixx = 0.083 * mass * (y*y + z*z) -->
+                                                <ixy>0</ixy>         <!-- for a box: ixy = 0 -->
+                                                <ixz>0</ixz>         <!-- for a box: ixz = 0 -->
+                                                <iyy>1</iyy>       <!-- for a box: iyy = 0.083 * mass * (x*x + z*z) -->
+                                                <iyz>0</iyz>         <!-- for a box: iyz = 0 -->
+                                                <izz>1</izz>       <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
+                                        </inertia>
+                                </inertial>
+                                <collision name="collision">
+                                        <geometry>
+                                                <box>
+                                                <size>0.05 40 5</size>
+                                                </box>
+                                        </geometry>
+                                </collision>
+                                <visual name="visual">
+                                        <geometry>
+                                                <box>
+                                                <size>0.05 40 5</size>
+                                                </box>
+                                        </geometry>
+                                </visual>
+                        </link>
+                </model>
+
+                <model name="wall_2">
+                        <pose>-10 0 2.5 0 0 0</pose>
+                        <static>true</static>
+                        <link name="link">
+                                <inertial>
+                                        <mass>10.0</mass>
+                                        <inertia> <!-- inertias are tricky to compute -->
+                                                <ixx>1</ixx>       <!-- for a box: ixx = 0.083 * mass * (y*y + z*z) -->
+                                                <ixy>0</ixy>         <!-- for a box: ixy = 0 -->
+                                                <ixz>0</ixz>         <!-- for a box: ixz = 0 -->
+                                                <iyy>1</iyy>       <!-- for a box: iyy = 0.083 * mass * (x*x + z*z) -->
+                                                <iyz>0</iyz>         <!-- for a box: iyz = 0 -->
+                                                <izz>1</izz>       <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
+                                        </inertia>
+                                </inertial>
+                                <collision name="collision">
+                                        <geometry>
+                                                <box>
+                                                <size>0.05 40 5</size>
+                                                </box>
+                                        </geometry>
+                                </collision>
+                                <visual name="visual">
+                                        <geometry>
+                                                <box>
+                                                <size>0.05 40 5</size>
+                                                </box>
+                                        </geometry>
+                                </visual>
+                        </link>
+                </model>
+
+                <model name="wall_3">
+                        <pose>0 20 2.5 0 0 0</pose>
+                        <static>true</static>
+                        <link name="link">
+                                <inertial>
+                                        <mass>10.0</mass>
+                                        <inertia> <!-- inertias are tricky to compute -->
+                                                <ixx>1</ixx>       <!-- for a box: ixx = 0.083 * mass * (y*y + z*z) -->
+                                                <ixy>0</ixy>         <!-- for a box: ixy = 0 -->
+                                                <ixz>0</ixz>         <!-- for a box: ixz = 0 -->
+                                                <iyy>1</iyy>       <!-- for a box: iyy = 0.083 * mass * (x*x + z*z) -->
+                                                <iyz>0</iyz>         <!-- for a box: iyz = 0 -->
+                                                <izz>1</izz>       <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
+                                        </inertia>
+                                </inertial>
+                                <collision name="collision">
+                                        <geometry>
+                                                <box>
+                                                <size>20 0.05 5</size>
+                                                </box>
+                                        </geometry>
+                                </collision>
+                                <visual name="visual">
+                                        <geometry>
+                                                <box>
+                                                <size>20 0.05 5</size>
+                                                </box>
+                                        </geometry>
+                                </visual>
+                        </link>
+                </model>
+
+                <model name="wall_4">
+                        <pose>0 -20 2.5 0 0 0</pose>
+                        <static>true</static>
+                        <link name="link">
+                                <inertial>
+                                        <mass>10.0</mass>
+                                        <inertia> <!-- inertias are tricky to compute -->
+                                                <ixx>1</ixx>       <!-- for a box: ixx = 0.083 * mass * (y*y + z*z) -->
+                                                <ixy>0</ixy>         <!-- for a box: ixy = 0 -->
+                                                <ixz>0</ixz>         <!-- for a box: ixz = 0 -->
+                                                <iyy>1</iyy>       <!-- for a box: iyy = 0.083 * mass * (x*x + z*z) -->
+                                                <iyz>0</iyz>         <!-- for a box: iyz = 0 -->
+                                                <izz>1</izz>       <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
+                                        </inertia>
+                                </inertial>
+                                <collision name="collision">
+                                        <geometry>
+                                                <box>
+                                                <size>20 0.05 5</size>
+                                                </box>
+                                        </geometry>
+                                </collision>
+                                <visual name="visual">
+                                        <geometry>
+                                                <box>
+                                                <size>20 0.05 5</size>
+                                                </box>
+                                        </geometry>
+                                </visual>
+                        </link>
+                </model>
+        </world>
+</sdf>
